@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Practice Page</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="images/rs_logo.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="frontend/css/styles.css" />
+    <script src="frontend/js/scripts.js"></script>
+    <!-- Autocomplete -->
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+
+        var availableTags = [
+          "Afghanistan",
+          "Albania",
+          "Algeria",
+          "American Samoa",
+          "Andorra",
+          "Angola",
+          "Anguilla",
+          "Antarctica",
+          "Antigua and Barbuda",
+          "Argentina",
+          "Armenia",
+          "Aruba",
+          "Australia",
+          "Austria",
+          "Azerbaijan",
+          "Bahamas",
+          "Bahrain",
+          "Bangladesh",
+          "Barbados",
+          "Belarus",
+          "Belgium",
+          "Belize",
+          "Benin",
+          "Bermuda",
+          "Bhutan",
+          "Bolivia",
+          "Bosnia and Herzegowina",
+          "Botswana",
+          "Bouvet Island",
+          "Brazil",
+          "British Indian Ocean Territory",
+          "Brunei Darussalam",
+          "Bulgaria",
+          "Burkina Faso",
+          "Burundi",
+          "Cambodia",
+          "Cameroon",
+          "Canada",
+          "Cape Verde",
+          "Cayman Islands",
+          "Central African Republic",
+          "Chad",
+          "Chile",
+          "China",
+          "Christmas Island",
+          "Cocos (Keeling) Islands",
+          "Colombia",
+          "Comoros",
+          "Congo",
+          "Congo, the Democratic Republic of the",
+          "Cook Islands",
+          "Costa Rica",
+          "Cote d'Ivoire",
+          "Croatia (Hrvatska)",
+          "Cuba",
+          "Cyprus",
+          "Czech Republic",
+          "Denmark",
+          "Djibouti",
+          "Dominica",
+          "Dominican Republic",
+          "East Timor",
+          "Ecuador",
+          "Egypt",
+          "El Salvador",
+          "Equatorial Guinea",
+          "Eritrea",
+          "Estonia",
+          "Ethiopia",
+          "Falkland Islands (Malvinas)",
+          "Faroe Islands",
+          "Fiji",
+          "Finland",
+          "France",
+          "France Metropolitan",
+          "French Guiana",
+          "French Polynesia",
+          "French Southern Territories",
+          "Gabon",
+          "Gambia",
+          "Georgia",
+          "Germany",
+          "Ghana",
+          "Gibraltar",
+          "Greece",
+          "Greenland",
+          "Grenada",
+          "Guadeloupe",
+          "Guam",
+          "Guatemala",
+          "Guinea",
+          "Guinea-Bissau",
+          "Guyana",
+          "Haiti",
+          "Heard and Mc Donald Islands",
+          "Holy See (Vatican City State)",
+          "Honduras",
+          "Hong Kong",
+          "Hungary",
+          "Iceland",
+          "India",
+          "Indonesia",
+          "Iran (Islamic Republic of)",
+          "Iraq",
+          "Ireland",
+          "Israel",
+          "Italy",
+          "Jamaica",
+          "Japan",
+          "Jordan",
+          "Kazakhstan",
+          "Kenya",
+          "Kiribati",
+          "Korea, Democratic People's Republic of",
+          "Korea, Republic of",
+          "Kuwait",
+          "Kyrgyzstan",
+          "Lao, People's Democratic Republic",
+          "Latvia",
+          "Lebanon",
+          "Lesotho",
+          "Liberia",
+          "Libyan Arab Jamahiriya",
+          "Liechtenstein",
+          "Lithuania",
+          "Luxembourg",
+          "Macau",
+          "Macedonia, The Former Yugoslav Republic of",
+          "Madagascar",
+          "Malawi",
+          "Malaysia",
+          "Maldives",
+          "Mali",
+          "Malta",
+          "Marshall Islands",
+          "Martinique",
+          "Mauritania",
+          "Mauritius",
+          "Mayotte",
+          "Mexico",
+          "Micronesia, Federated States of",
+          "Moldova, Republic of",
+          "Monaco",
+          "Mongolia",
+          "Montserrat",
+          "Morocco",
+          "Mozambique",
+          "Myanmar",
+          "Namibia",
+          "Nauru",
+          "Nepal",
+          "Netherlands",
+          "Netherlands Antilles",
+          "New Caledonia",
+          "New Zealand",
+          "Nicaragua",
+          "Niger",
+          "Nigeria",
+          "Niue",
+          "Norfolk Island",
+          "Northern Mariana Islands",
+          "Norway",
+          "Oman",
+          "Pakistan",
+          "Palau",
+          "Panama",
+          "Papua New Guinea",
+          "Paraguay",
+          "Peru",
+          "Philippines",
+          "Pitcairn",
+          "Poland",
+          "Portugal",
+          "Puerto Rico",
+          "Qatar",
+          "Reunion",
+          "Romania",
+          "Russian Federation",
+          "Rwanda",
+          "Saint Kitts and Nevis",
+          "Saint Lucia",
+          "Saint Vincent and the Grenadines",
+          "Samoa",
+          "San Marino",
+          "Sao Tome and Principe",
+          "Saudi Arabia",
+          "Senegal",
+          "Seychelles",
+          "Sierra Leone",
+          "Singapore",
+          "Slovakia (Slovak Republic)",
+          "Slovenia",
+          "Solomon Islands",
+          "Somalia",
+          "South Africa",
+          "South Georgia and the South Sandwich Islands",
+          "Spain",
+          "Sri Lanka",
+          "St. Helena",
+          "St. Pierre and Miquelon",
+          "Sudan",
+          "Suriname",
+          "Svalbard and Jan Mayen Islands",
+          "Swaziland",
+          "Sweden",
+          "Switzerland",
+          "Syrian Arab Republic",
+          "Taiwan, Province of China",
+          "Tajikistan",
+          "Tanzania, United Republic of",
+          "Thailand",
+          "Togo",
+          "Tokelau",
+          "Tonga",
+          "Trinidad and Tobago",
+          "Tunisia",
+          "Turkey",
+          "Turkmenistan",
+          "Turks and Caicos Islands",
+          "Tuvalu",
+          "Uganda",
+          "Ukraine",
+          "United Arab Emirates",
+          "United Kingdom (UK)",
+          "United States (USA)",
+          "United States Minor Outlying Islands",
+          "Uruguay",
+          "Uzbekistan",
+          "Vanuatu",
+          "Venezuela",
+          "Vietnam",
+          "Virgin Islands (British)",
+          "Virgin Islands (U.S.)",
+          "Wallis and Futuna Islands",
+          "Western Sahara",
+          "Yemen",
+          "Yugoslavia",
+          "Zambia",
+          "Zimbabwe",
+        ];
+        $("#autocomplete").autocomplete({
+          maxResults: 10,
+          minLength: 2,
+          source: availableTags,
+        });
+      });
+    </script>
+    <!-- Autocomplete Ends -->
+  </head>
+  <body>
+    <h1>Practice Page</h1>
+    <div class="block large-row-spacer">
+      <div class="left-align" id="radio-btn-example">
+        <fieldset>
+          <legend>Radio Button Example</legend>
+          <label for="radio1">
+            <input
+              value="radio1"
+              name="radioButton"
+              class="radioButton"
+              type="radio"
+            />
+            Radio1
+          </label>
+          <label for="radio2">
+            <input
+              value="radio2"
+              name="radioButton"
+              class="radioButton"
+              type="radio"
+            />
+            Radio2
+          </label>
+          <label for="radio3">
+            <input
+              value="radio3"
+              name="radioButton"
+              class="radioButton"
+              type="radio"
+            />
+            Radio3
+          </label>
+        </fieldset>
+      </div>
+
+      <div class="cen-left-align" id="select-class-example">
+        <fieldset>
+          <legend>Suggession Class Example</legend>
+          <input
+            type="text"
+            id="autocomplete"
+            class="inputs"
+            placeholder="Type to Select Countries"
+          />
+        </fieldset>
+      </div>
+
+      <div class="cen-right-align">
+        <fieldset>
+          <legend>Dropdown Example</legend>
+          <select id="dropdown-class-example" name="dropdown-class-example">
+            <option value="">Select</option>
+            <option value="option1">Option1</option>
+            <option value="option2">Option2</option>
+            <option value="option3">Option3</option>
+          </select>
+        </fieldset>
+      </div>
+
+      <div class="right-align" id="checkbox-example">
+        <fieldset>
+          <legend>Checkbox Example</legend>
+          <label for="bmw">
+            <input
+              id="checkBoxOption1"
+              value="option1"
+              name="checkBoxOption1"
+              type="checkbox"
+            />
+            Option1
+          </label>
+          <label for="benz">
+            <input
+              id="checkBoxOption2"
+              value="option2"
+              name="checkBoxOption2"
+              type="checkbox"
+            />
+            Option2
+          </label>
+          <label for="honda">
+            <input
+              id="checkBoxOption3"
+              value="option3"
+              name="checkBoxOption3"
+              type="checkbox"
+            />
+            Option3
+          </label>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="block large-row-spacer">
+      <div class="left-align">
+        <fieldset>
+          <legend>Switch Window Example</legend>
+          <button
+            id="openwindow"
+            class="btn-style class1"
+            onclick="openWindow()"
+          >
+            Open Window
+          </button>
+        </fieldset>
+      </div>
+      <div class="cen-align">
+        <fieldset>
+          <legend class="switch-tab">Switch Tab Example</legend>
+          <a
+            id="opentab"
+            class="btn-style class1 class2"
+            href="https://www.qaclickacademy.com"
+            target="_blank"
+            >Open Tab</a
+          >
+        </fieldset>
+      </div>
+      <div class="">
+        <fieldset class="pull-right">
+          <legend>Switch To Alert Example</legend>
+          <input
+            id="name"
+            name="enter-name"
+            class="inputs"
+            placeholder="Enter Your Name"
+            type="text"
+          /><br />
+          <input
+            id="alertbtn"
+            class="btn-style"
+            value="Alert"
+            onclick="displayAlert()"
+            type="submit"
+          />
+          <input
+            id="confirmbtn"
+            class="btn-style"
+            value="Confirm"
+            onclick="displayConfirm()"
+            type="submit"
+          />
+        </fieldset>
+      </div>
+      <br />
+    </div>
+
+    <div class="block large-row-spacer">
+      <div class="left-align">
+        <fieldset>
+          <legend>Web Table Example</legend>
+          <table id="product" name="courses" class="table-display" border="1">
+            <tbody>
+              <tr>
+                <th>Instructor</th>
+                <th>Course</th>
+                <th>Price</th>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>
+                  Selenium Webdriver with Java Basics + Advanced + Interview
+                  Guide
+                </td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>Learn SQL in Practical + Database Testing from Scratch</td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>
+                  Appium (Selenium) - Mobile Automation Testing from Scratch
+                </td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>
+                  WebSecurity Testing for Beginners-QA knowledge to next level
+                </td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>
+                  Learn JMETER from Scratch - (Performance + Load) Testing Tool
+                </td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>WebServices / REST API Testing with SoapUI</td>
+                <td>35</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>
+                  QA Expert Course :Software Testing + Bugzilla + SQL + Agile
+                </td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>Master Selenium Automation in simple Python Language</td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>
+                  Advanced Selenium Framework Pageobject, TestNG, Maven,
+                  Jenkins,C
+                </td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>Rahul Shetty</td>
+                <td>
+                  Write effective QA Resume that will turn to interview call
+                </td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
+      </div>
+      <div class="right-align">
+        <fieldset>
+          <legend>Element Displayed Example</legend>
+          <input
+            id="hide-textbox"
+            class="btn-style class2"
+            value="Hide"
+            onclick="hideElement()"
+            type="submit"
+          />
+          <input
+            id="show-textbox"
+            class="btn-style class2"
+            value="Show"
+            onclick="showElement()"
+            type="submit"
+          />
+          <br /><br />
+          <input
+            id="displayed-text"
+            name="show-hide"
+            class="inputs displayed-class"
+            placeholder="Hide/Show Example"
+            type="text"
+          />
+        </fieldset>
+        <fieldset>
+          <legend>Web Table Fixed header</legend>
+          <div class="tableFixHead" style="overflow-y: auto; height: 195px">
+            <table id="product">
+              <thead>
+                <tr>
+                  <th style="position: sticky; top: 0">Name</th>
+                  <th style="position: sticky; top: 0">Position</th>
+                  <th style="position: sticky; top: 0">City</th>
+                  <th style="position: sticky; top: 0">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Alex</td>
+                  <td>Engineer</td>
+                  <td>Chennai</td>
+                  <td>28</td>
+                </tr>
+                <tr>
+                  <td>Ben</td>
+                  <td>Mechanic</td>
+                  <td>Bengaluru</td>
+                  <td>23</td>
+                </tr>
+                <tr>
+                  <td>Dwayne</td>
+                  <td>Manager</td>
+                  <td>Kolkata</td>
+                  <td>48</td>
+                </tr>
+                <tr>
+                  <td>Ivory</td>
+                  <td>Receptionist</td>
+                  <td>Chennai</td>
+                  <td>18</td>
+                </tr>
+                <tr>
+                  <td>Jack</td>
+                  <td>Engineer</td>
+                  <td>Pune</td>
+                  <td>32</td>
+                </tr>
+                <tr>
+                  <td>Joe</td>
+                  <td>Postman</td>
+                  <td>Chennai</td>
+                  <td>46</td>
+                </tr>
+                <tr>
+                  <td>Raymond</td>
+                  <td>Businessman</td>
+                  <td>Mumbai</td>
+                  <td>37</td>
+                </tr>
+                <tr>
+                  <td>Ronaldo</td>
+                  <td>Sportsman</td>
+                  <td>Chennai</td>
+                  <td>31</td>
+                </tr>
+                <tr>
+                  <td>Smith</td>
+                  <td>Cricketer</td>
+                  <td>Delhi</td>
+                  <td>33</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br />
+          <div class="totalAmount">Total Amount Collected: 296</div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="block large-row-spacer">
+      <div class="left-align">
+        <fieldset style="margin-bottom: 60px">
+          <legend>Mouse Hover Example</legend>
+          <div class="mouse-hover">
+            <button id="mousehover" class="btn btn-primary">Mouse Hover</button>
+            <div class="mouse-hover-content">
+              <a href="#top">Top</a>
+              <a href="">Reload</a>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="block large-row-spacer">
+      <fieldset>
+        <legend>iFrame Example</legend>
+        <iframe
+          id="courses-iframe"
+          src="https://rahulshettyacademy.com/"
+          name="iframe-name"
+          style="width: 100%; height: 600px"
+          scrolling="yes"
+          marginwidth="0"
+          marginheight="0"
+          vspace="0"
+          hspace="0"
+          frameborder="0"
+        >
+        </iframe>
+      </fieldset>
+    </div>
+  </body>
+
+  <!-- ==== CREDITS START == -->
+  <div class="col-sm-8 right-align">
+    &copy; 2019 Powered by<strong
+      ><a href="http://www.medianhconsulting.com" target="_blank">
+        Medianh Consulting</a
+      ></strong
+    >
+  </div>
+  <!-- ==== CREDITS END == -->
+</html>
